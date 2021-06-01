@@ -1,17 +1,29 @@
 class Tablero:
     def __init__(self):
-        print("Tablero")
+        print("__init__ Tablero")
+    
+    def draw(self):
+        print("Dibujo Tablero")
 
 
 class Jugador:
-    def __init__(self):
-        print("Jugador")
+    def __init__(self, jugador):
+        print("__init__ Jugador")
+        self.jugador = jugador
 
 
 class Juego:
     def __init__(self):
-        print("Juego")
+        print("__init__ Juego")
+        self.tablero = Tablero()
+        self.jugadores = [
+            Jugador('X'),
+            Jugador('O')
+        ]
 
-Tablero()
-Jugador()
-Juego()
+    def jugar(self):
+        self.tablero.draw()
+
+
+juego = Juego()
+juego.jugar()
