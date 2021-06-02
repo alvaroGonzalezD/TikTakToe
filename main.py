@@ -4,7 +4,8 @@ class Tablero:
             0, 0, 0, 
             0, 0, 0, 
             0, 0, 0]
-        print(self.celdas)
+        print("Tablero iniciado")
+
     
     def draw(self):
         print(f"""\t _______________________
@@ -16,18 +17,20 @@ class Tablero:
 \t|_______|_______|_______|
 \t|       |       |       |
 \t|   {self.celdas[0]}   |   {self.celdas[1]}   |   {self.celdas[2]}   |
-\t|_______|_______|_______|""")
+\t|_______|_______|_______|
+""")
+        print("Tablero cargado con Éxito")
 
 
 class Jugador:
     def __init__(self, jugador):
-        print("__init__ Jugador")
+        print(f"Jugador {jugador} ha entrado a la sala")
         self.jugador = jugador
 
 
 class Juego:
     def __init__(self):
-        print("__init__ Juego")
+        print("Juego Iniciado")
         self.tablero = Tablero()
         self.jugadores = [
             Jugador('X'),
@@ -36,6 +39,7 @@ class Juego:
 
     def jugar(self):
         self.tablero.draw()
+
 
 
 juego = Juego()
