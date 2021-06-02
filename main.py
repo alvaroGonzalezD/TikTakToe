@@ -1,73 +1,76 @@
-# Se crea la clase "Tablero"
-class Tablero:
+# Se crea la clase "board"
+class board:
 
     # Inicializar clase(__init__, siempre ejecuta esto cuando se llama a un objeto de esta clase)
     def __init__(self):
-        self.celdas = [
+        self.cell = [
             0, 0, 0, 
             0, 0, 0, 
             0, 0, 0]
-        print("Tablero iniciado")
+        print("board iniciado")
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos
     def draw(self):
 
-        # Dibujo del tablero de juego visible
+        # Dibujo del board de juego visible
         print(f"""\t _______________________
 \t|       |       |       |
-\t|   {self.celdas[6]}   |   {self.celdas[7]}   |   {self.celdas[8]}   |
+\t|   {self.cell[6]}   |   {self.cell[7]}   |   {self.cell[8]}   |
 \t|_______|_______|_______|
 \t|       |       |       |
-\t|   {self.celdas[3]}   |   {self.celdas[4]}   |   {self.celdas[5]}   |
+\t|   {self.cell[3]}   |   {self.cell[4]}   |   {self.cell[5]}   |
 \t|_______|_______|_______|
 \t|       |       |       |
-\t|   {self.celdas[0]}   |   {self.celdas[1]}   |   {self.celdas[2]}   |
+\t|   {self.cell[0]}   |   {self.cell[1]}   |   {self.cell[2]}   |
 \t|_______|_______|_______|
 """)
-        print("Tablero cargado con Éxito")
+        print("board cargado con Éxito")
 
 
-# Se crea la clase "Jugador"
-class Jugador:
+    def checkCell(self):
+        ()
+
+
+# Se crea la clase "Game"
+class Player:
 
     # Inicializar clase(__init__, siempre ejecuta esto cuando se llama a un objeto de esta clase)
-    def __init__(self, jugador):
-        print(f"Jugador {jugador} ha entrado a la sala")
-        self.jugador = jugador
+    def __init__(self, player):
+        print(f"Jugador {player} ha entrado a la sala")
+        self.player = player
 
-    # Fuera del init, para acceder a los métodos, hay que llamarlos(Jugador.eleccion())
-    def eleccion(self):
-        input(f"Es el turno de {self.jugador}")
+    # Fuera del init, para acceder a los métodos, hay que llamarlos(Jugador.choose())
+    def choose(self):
+        return input(f"Es el turn de {self.player}\nDonde vas a colocar tu ficha?: ")
 
 
-# Se crea la clase "Juego"
-class Juego:
+# Se crea la clase "Game"
+class Game:
 
     # Inicializar clase(__init__, siempre ejecuta esto cuando se llama a un objeto de esta clase)
     def __init__(self):
         print("Juego Iniciado")
-        self.tablero = Tablero()
-        self.jugadores = [
-            Jugador('X'),
-            Jugador('O')
+        self.board = board()
+        self.players = [
+            Player('X'),
+            Player('O')
         ]
-        self.turnos = 0
+        self.turns = 0
 
 
-    # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.jugar())
-    def jugar(self):
-        self.tablero.draw()
+ # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.turn())
+    def turn(self):
+        return self.players[self.turns % 2].choose()
 
 
-    # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.turno())
-    def turno(self):
-        if self.turnos % 2:
-            self.jugadores[1].eleccion()
-        else:
-            self.jugadores[0].eleccion()
+    # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.play())
+    def play(self):
+        self.board.draw()
+        movement=  int(self.turn())
+        movement-= 1
+
 
 # Guardamos "Juego" en una variable
-juego = Juego()
-# Se llama ahora a los métodos "jugar" y "turno" dentro de "juego"("juego" esequivalente a "Juego" en ete caso)
-juego.jugar()
-juego.turno()
+game = Game()
+# Se llama ahora a los métodos "play" y "turn" dentro de "juego"("juego" esequivalente a "Juego" en ete caso)
+game.play()
