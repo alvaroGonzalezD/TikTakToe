@@ -7,7 +7,7 @@ class board:
             0, 0, 0, 
             0, 0, 0, 
             0, 0, 0]
-        print("board iniciado")
+        print("Tabla iniciada")
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos
     def draw(self):
@@ -24,7 +24,7 @@ class board:
 \t|   {self.cell[0]}   |   {self.cell[1]}   |   {self.cell[2]}   |
 \t|_______|_______|_______|
 """)
-        print("board cargado con Éxito")
+        print("tabla cargado con Éxito")
 
 
     def checkCell(self):
@@ -41,7 +41,7 @@ class Player:
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Jugador.choose())
     def choose(self):
-        return input(f"Es el turn de {self.player}\nDonde vas a colocar tu ficha?: ")
+        return input(f"Es el turno de {self.player}\nDonde vas a colocar tu ficha?: ")
 
 
 # Se crea la clase "Game"
