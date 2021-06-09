@@ -1,5 +1,3 @@
-from board import Board
-
 # Se crea la clase "Player", que hace referencia a los jugadores
 class Player:
 
@@ -8,11 +6,11 @@ class Player:
         # print(f"Jugador { token } ha entrado a la sala")
         self.token = token
         # Arreglar el tema de la tabla vacía con "no números" ej "d"
-        self.board = Board()
+
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Jugador.choose())
     # Se hace la elección de casilla válida
-    def choose(self):
+    def choose(self, board):
         tokenPlaced = None
         while tokenPlaced == None:
             try:
@@ -23,6 +21,6 @@ class Player:
                     tokenPlaced = int(captura)
             except ValueError:
                 print(f"\t({ captura }) No es un valor válido")
-                self.board.draw()
+                board.draw()
         tokenPlaced -= 1
         return tokenPlaced

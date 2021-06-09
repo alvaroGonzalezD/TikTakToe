@@ -18,7 +18,7 @@ class Game:
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.turn())
     # Se da paso a la jugada de jugador según sea su turno
     def playerMovement(self):
-        return self.players[self.turns % 2].choose()
+        return self.players[self.turns % 2].choose(self.board)
 
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.checkCell())
