@@ -33,15 +33,40 @@ class Game:
 
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.checkCell())
-    # Determina si es victoria o no
-    def winGame(self,cell):
+    # Nos dice si hemos ganado, si no, epera a un caso de victoria
+    def victory(self,case):
         winCondition = ["XXX", "OOO"]
-
-        case1 = (cell[0] + cell[1] + cell[2])
-
-        if case1 == winCondition:
+        if case in winCondition:
+            self.board.draw()
             print("You Win")
             exit()
+
+
+    # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.checkCell())
+    # Analiza las jugadas posibles y las envía a la función que analiza si has ganado o no
+    def possibleMovements(self,cell):
+        win = self.victory
+
+        case1 = (cell[0] + cell[1] + cell[2])
+        case2 = (cell[3] + cell[4] + cell[5])
+        case3 = (cell[6] + cell[7] + cell[8])
+        case4 = (cell[0] + cell[3] + cell[6])
+        case5 = (cell[1] + cell[4] + cell[7])
+        case6 = (cell[2] + cell[5] + cell[8])
+        case7 = (cell[0] + cell[4] + cell[8])
+        case8 = (cell[2] + cell[4] + cell[6])
+
+
+        win(case1)
+        win(case2)
+        win(case3)
+        win(case4)
+        win(case5)
+        win(case6)
+        win(case7)
+        win(case8)
+        
+
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.checkCell())
     # Finaliza el juego
@@ -62,8 +87,9 @@ class Game:
                 self.turns += 1
             else:
                print("Movimiento NO válido") 
-            self.winGame(self.board.cell)
+            self.possibleMovements(self.board.cell)
             if self.turns == 9:
                 self.board.draw()
+                print("El juego ha acabado en tablas")
                 self.endGame()
 
