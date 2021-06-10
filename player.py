@@ -1,3 +1,4 @@
+from textoES import consoleText as msg
 # Se crea la clase "Player", que hace referencia a los jugadores
 class Player:
 
@@ -14,13 +15,13 @@ class Player:
         tokenPlaced = None
         while tokenPlaced == None:
             try:
-                captura = input(f"Es el turno de {self.token}\nDonde vas a colocar tu ficha?: ")
+                captura = input(msg["playPlayer"].format(**{'token': self.token}))
                 if captura == 0:
-                    print("Esa casilla no existe")
+                    print(msg["notCell"])
                 else:
                     tokenPlaced = int(captura)
             except ValueError:
-                print(f"\t({ captura }) No es un valor válido")
+                print(msg["invalid"].format(**{'captura': captura}))
                 board.draw()
         tokenPlaced -= 1
         return tokenPlaced

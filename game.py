@@ -1,12 +1,15 @@
+import os
+import json
 from board import Board
 from player import Player
+from textoES import consoleText as msg
 
 # Se crea la clase "Game", que es en sí, quien define el estado del juego
 class Game:
 
     # Inicializar clase(__init__, siempre ejecuta esto cuando se llama a un objeto de esta clase)
     def __init__(self):
-        print("Juego Iniciado")
+        print(msg["launch"])
         self.board = Board()
         self.players = [
             Player('X'),
@@ -28,7 +31,7 @@ class Game:
             # print(movement)
             return True
         else:
-            print("Esa casilla no existe")
+            print(msg["badCell"])
             return False
 
 
@@ -38,7 +41,7 @@ class Game:
         winCondition = ["XXX", "OOO"]
         if case in winCondition:
             self.board.draw()
-            print("You Win")
+            print(msg["win"])
             exit()
 
 
@@ -67,12 +70,12 @@ class Game:
         win(case8)
         
 
-
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.checkCell())
     # Finaliza el juego
     def endGame(self):
-        print("Game Has Finished")
+        print(msg["end"])
         exit()
+
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.play())
     # Este es el programa principal en sí
@@ -86,10 +89,9 @@ class Game:
                 self.board.fillCell(movement, player.token)
                 self.turns += 1
             else:
-               print("Movimiento NO válido") 
+               print(msg["noValid"]) 
             self.possibleMovements(self.board.cell)
             if self.turns == 9:
                 self.board.draw()
-                print("El juego ha acabado en tablas")
+                print(msg["draw"])
                 self.endGame()
-

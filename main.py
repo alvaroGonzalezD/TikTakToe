@@ -1,4 +1,4 @@
-from game import Game 
+from game import Game
 
 # Guardamos "Juego" en una variable
 game = Game()

@@ -1,3 +1,5 @@
+from boardDraw import consoleDraws as pict
+from textoES import consoleText as msg
 # Se crea la clase "board" que hace referencia al tablero en sí
 class Board:
 
@@ -14,17 +16,7 @@ class Board:
     def draw(self):
         c = self.cell
         # Dibujo del board de juego visible
-        print(f"""\t _______________________
-        |       |       |       |
-        |   {c[6]}   |   {c[7]}   |   {c[8]}   |
-        |_______|_______|_______|
-        |       |       |       |
-        |   {c[3]}   |   {c[4]}   |   {c[5]}   |
-        |_______|_______|_______|
-        |       |       |       |
-        |   {c[0]}   |   {c[1]}   |   {c[2]}   |
-        |_______|_______|_______|
-        """)
+        print(pict["table1"].format(**{"zero": c[0],"one": c[1], "two": c[2], "three": c[3], "four": c[4], "five": c[5], "six": c[6], "seven": c[7], "eight": c[8]}))
         # print("tabla cargada con Éxito")
 
     # Comprueba si la casilla está vacía
@@ -32,7 +24,7 @@ class Board:
         if self.cell[movement] == "*":
             # print("casilla vacia")
             return True
-        print("casilla ocupada")
+        print(msg["already"])
         return False
             
     # Llena la casilla con la ficha "X" o "0" (si no hay, por defecto pone "F")
