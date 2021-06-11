@@ -9,12 +9,33 @@ class Game:
 
     # Inicializar clase(__init__, siempre ejecuta esto cuando se llama a un objeto de esta clase)
     def __init__(self):
-        print(msg["launch"])
         self.board = Board()
-        self.players = [
-            Player('X'),
-            Player('O')
-        ]
+        validToken = ["X","O","0"]
+        yourToken = str(input(msg["choseToken"])).upper()
+        if yourToken not in validToken:
+            print(msg["noToken"])
+            print(msg["defaultX"])
+            self.players = [
+                Player("X"),
+                Player("O")
+            ]
+        elif yourToken == "0":
+            print(msg["zeroToken"])
+            print(msg["defaultO"])
+            self.players = [
+                Player("O"),
+                Player("X")
+            ]
+        elif yourToken == "X":
+            self.players = [
+                Player("X"),
+                Player("O")
+            ]
+        elif yourToken == "O":
+            self.players = [
+                Player("O"),
+                Player("X")
+            ]
         self.turns = 0
 
 
@@ -47,7 +68,7 @@ class Game:
 
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.checkCell())
     # Analiza las jugadas posibles y las envía a la función que analiza si has ganado o no
-    def possibleMovements(self,cell):
+    def possibleMovements(self,cell,setBoard):
         win = self.victory
 
         case1 = (cell[0] + cell[1] + cell[2])
@@ -80,7 +101,9 @@ class Game:
     # Fuera del init, para acceder a los métodos, hay que llamarlos(Juego.play())
     # Este es el programa principal en sí
     def play(self):
+        setBoard = self.board.whichTable
         while True:
+            print(msg["launch"])
             self.board.draw()
             movement = self.playerMovement()
             player = self.players[self.turns % 2]
@@ -89,8 +112,8 @@ class Game:
                 self.board.fillCell(movement, player.token)
                 self.turns += 1
             else:
-               print(msg["noValid"]) 
-            self.possibleMovements(self.board.cell)
+                print(msg["noValid"]) 
+            self.possibleMovements(self.board.cell,setBoard)
             if self.turns == 9:
                 self.board.draw()
                 print(msg["draw"])

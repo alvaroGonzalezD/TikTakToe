@@ -15,13 +15,18 @@ class Player:
         tokenPlaced = None
         while tokenPlaced == None:
             try:
-                captura = input(msg["playPlayer"].format(**{'token': self.token}))
+                captura = input(msg["playPlayer"].format(**{'token': self.token})).upper()
                 if captura == 0:
                     print(msg["notCell"])
+                elif captura == "E":
+                    print(msg["forcedExit"])
+                    exit()
                 else:
                     tokenPlaced = int(captura)
             except ValueError:
                 print(msg["invalid"].format(**{'captura': captura}))
+                print(msg["launch"])
                 board.draw()
+
         tokenPlaced -= 1
         return tokenPlaced

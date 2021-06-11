@@ -1,29 +1,30 @@
-# asignamos loos codigos de color a una variable
-none = "\033[0;m"
-red = "\033[0;31m"
-green = "\033[1;32m"
-yellow = "\033[1;33m"
-blue = "\033[1;34m"
-purple = "\033[1;35m"
-
 # lista de textos que vamos a llamar desde "main" (Da opción de traducir el texto)
 consoleText = {
     # Game texts
-    "launch": "Juego Iniciado",
-    "badCell": "Esa casilla no existe",
-    "win": "Has ganado esta patida",
-    "end": "El juego ha acabado",
-    "noValid": "Movimiento NO válido",
-    "draw": "El juego ha acabado en tablas",
+    "choseToken": "\nCon qué ficha va a empezar a jugar?, tienes[X] y [O]: ",
+    "noToken": "\n\t\t\tEso no es una ficha valida\n",
+    "defaultX": "\nSe asigna por defecto la [X]",
+    "defaultO": "\n\tQuiso referirse a [O]?\n\tAsignada la ficha [O]",
+    "zeroToken": "\n\t\tEso es un cero, no una \"O\", melón\n",
+    "launch": "\nJuego Iniciado",
+    "badCell": "\n\t\tEsa casilla no existe",
+    "win": "\nHas ganado esta patida",
+    "end": "\nEl juego ha acabado",
+    "noValid": "\n\t\tMovimiento NO válido",
+    "draw": "\nEl juego ha quedado en tablas",
     
     # Player texts
     "turn": "Es el turno de ",
     "whereToken": "\nDonde vas a colocar tu ficha?: ",
-    "playPlayer": "Es el turno de {token}\nDonde vas a colocar tu ficha?: ",
-    "notCell": "Esa casilla NO existe",
+    "playPlayer": "Es el turno de {token}\nPresione [E]xit para cerrar programa\nDonde vas a colocar tu ficha?: ",
+    "notCell": "\n\t\t\tEsa casilla NO existe",
     "invalid": "\t({captura}) No es un valor válido",
 
     # Board texts
-    "already": "Esta casilla ya se encuentra ocupada"
+    "tables": "Qué tablero vas a utilizar? [S]quare, [T]iny, [L]aded, [R]omboid, or [E]xit program: ",
+    "noTable": "Eso que has intoducido no es una tabla de las que dispongo",
+    "already": "\t\t\tEsta casilla ya se encuentra ocupada",
+    "forcedExit": "Has cerrado el juego correctamente"
+
 
 }
